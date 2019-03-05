@@ -2,7 +2,7 @@
   "name": "otp-js",
   "version": "0.0.1",
   "description": "BEAM OTP in Javascript",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "pack build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,7 @@
   "license": "MIT",
   "@pika/pack": {
     "pipeline": [
-      ["@pika/plugin-standard-pkg", {
+      ["@pika/plugin-ts-standard-pkg", {
         "exclude": [
           "__tests__/*"
         ]
@@ -26,7 +26,12 @@
   },
   "devDependencies": {
     "@pika/pack": "^0.3.4",
+    "@pika/plugin-build-types": "^0.3.13",
     "@pika/plugin-build-web": "^0.3.13",
-    "@pika/plugin-standard-pkg": "^0.3.13"
+    "@pika/plugin-ts-standard-pkg": "^0.3.13"
+  },
+  "dependencies": {
+    "comlink": "^3.2.0",
+    "rxjs": "^6.4.0"
   }
 }

@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "allowUnreachableCode": false,
+    "strictPropertyInitialization": false,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "target": "es2018",
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "esnext"
+    ]
+  }
+}

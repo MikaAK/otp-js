@@ -3,7 +3,8 @@
   "description": "BEAM OTP in Javascript",
   "version": "0.0.1",
   "license": "MIT",
-  "esnext": "dist-src/index.js",
+  "source": "dist-src/index.js",
+  "types": "dist-types/index.d.ts",
   "module": "dist-web/index.js",
   "pika": true,
   "sideEffects": false,
@@ -17,10 +18,14 @@
     "assets/",
     "bin/"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "comlink": "^3.2.0",
+    "rxjs": "^6.4.0"
+  },
   "devDependencies": {
     "@pika/pack": "^0.3.4",
+    "@pika/plugin-build-types": "^0.3.13",
     "@pika/plugin-build-web": "^0.3.13",
-    "@pika/plugin-standard-pkg": "^0.3.13"
+    "@pika/plugin-ts-standard-pkg": "^0.3.13"
   }
 }
