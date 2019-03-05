@@ -1,0 +1,26 @@
+{
+  "name": "otp-js",
+  "description": "BEAM OTP in Javascript",
+  "version": "0.0.1",
+  "license": "MIT",
+  "esnext": "dist-src/index.js",
+  "module": "dist-web/index.js",
+  "pika": true,
+  "sideEffects": false,
+  "keywords": [
+    "elixir",
+    "js",
+    "otp"
+  ],
+  "files": [
+    "dist-*/",
+    "assets/",
+    "bin/"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@pika/pack": "^0.3.4",
+    "@pika/plugin-build-web": "^0.3.13",
+    "@pika/plugin-standard-pkg": "^0.3.13"
+  }
+}
