@@ -16,22 +16,29 @@
   "license": "MIT",
   "@pika/pack": {
     "pipeline": [
-      ["@pika/plugin-ts-standard-pkg", {
-        "exclude": [
-          "__tests__/*"
-        ]
-      }],
-      ["@pika/plugin-build-web"]
+      [
+        "@pika/plugin-ts-standard-pkg",
+        {
+          "exclude": [
+            "__tests__/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
     ]
   },
   "devDependencies": {
     "@pika/pack": "^0.3.4",
     "@pika/plugin-build-types": "^0.3.13",
     "@pika/plugin-build-web": "^0.3.13",
-    "@pika/plugin-ts-standard-pkg": "^0.3.13"
+    "@pika/plugin-ts-standard-pkg": "^0.3.13",
+    "@types/uuid": "^3.4.4"
   },
   "dependencies": {
     "comlink": "^3.2.0",
-    "rxjs": "^6.4.0"
+    "rxjs": "^6.4.0",
+    "uuid": "^3.3.2"
   }
 }
