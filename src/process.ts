@@ -4,7 +4,7 @@ import {ProxyResult, proxyValue} from 'comlink'
 import {log} from 'helpers'
 
 import {PID} from './pid'
-import {WorkerProcess, ProcessMessageFunction} from './worker-process'
+import {WorkerProcess, ProcessMessageFunction, ProcessSendMainMessageFunction} from './worker-process'
 import {createWorkerProcess} from './create-worker-process'
 
 import {
@@ -25,8 +25,11 @@ export class Process<T> {
     return getAllRegistryProcesses()
   }
 
-  public static create<T>(processMessage: ProcessMessageFunction<T>) {
-    const process = new Process<T>(processMessage)
+  public static create<T>(
+    processMessage: ProcessMessageFunction<T>,
+    processMainMessage: ProcessSendMainMessageFunction<T>
+  ) {
+    const process = new Process<T>(processMessage, processMainMessage)
 
     setRegistryProcess(process.pid(), process)
 
@@ -46,8 +49,12 @@ export class Process<T> {
   private _worker: ProxyResult<WorkerProcess<T>>
   private _receivePort: MessagePort
 
-  constructor(processMessage: ProcessMessageFunction<T>) {
+  constructor(
+    processMessage: ProcessMessageFunction<T>,
+    processMainMessage: ProcessSendMainMessageFunction<T>
+  ) {
     const channel = new MessageChannel()
+    const sendPort = channel.port2
 
     this._receivePort = channel.port1
     this._worker = createWorkerProcess()
@@ -58,6 +65,11 @@ export class Process<T> {
       channel.port2,
       processMessage
     )
+
+    // Messages back to window
+    sendPort.onmessage = ({data}: {data: T}) => {
+      processMainMessage(data)
+    }
   }
 
   public handleMessage(data: T) {
